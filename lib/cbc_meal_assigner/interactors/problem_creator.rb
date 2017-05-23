@@ -22,6 +22,7 @@ class ProblemCreator
     one_restaurant_per_order
     not_same_restaurant_twice
     restaurant_capacities
+    dont_assign_past_restaurants
   end
 
   def one_restaurant_per_order
@@ -50,6 +51,15 @@ class ProblemCreator
           assignment.order_headcount * assignment.cbc_variable
         end
         cbc_model.enforce(restaurant_capacity: terms.inject(:+) <= restaurant.capacity)
+      end
+    end
+  end
+
+  def dont_assign_past_restaurants
+    PastAssignment.each do |past_assignment|
+      assignments_to_avoid = past_assignment.matching_assignments
+      assignments_to_avoid.each do |assignment|
+        cbc_model.enforce(assignment.cbc_variable == 0)
       end
     end
   end

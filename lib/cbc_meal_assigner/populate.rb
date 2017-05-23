@@ -19,4 +19,6 @@ def populate
 
   Order.create(:MUL001, :MuleSoft, :monday)
   Order.create(:MUL002, :MuleSoft, :wednesday)
+
+  PastAssignment.create(:MuleSoft, :Dosa)
 end

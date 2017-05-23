@@ -11,6 +11,7 @@ files = %w(
   models/assignment.rb
   models/assignments_list.rb
   models/client.rb
+  models/past_assignment.rb
   models/order.rb
   models/restaurant.rb
   models/solution.rb

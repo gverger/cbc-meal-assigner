@@ -28,6 +28,10 @@ class Assignment
     order.headcount
   end
 
+  def client
+    order.client
+  end
+
   def restaurant_capacity
     restaurant.capacity
   end

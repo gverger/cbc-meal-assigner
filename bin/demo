@@ -13,6 +13,11 @@ puts "#### ALL ASSIGNMENTS ####\n"
 puts AssignmentList.new(Assignment.all)
 gets
 
+puts "\n#### PAST ASSIGNMENTS ####"
+PastAssignment.each do |assignment|
+  puts "#{assignment.client.name} - #{assignment.restaurant.name}"
+end
+
 puts "\n#### PROBLEM ####\n"
 problem = ProblemCreator.new.problem
 puts problem
