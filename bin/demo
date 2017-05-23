@@ -11,10 +11,12 @@ create_assignments
 
 puts "#### ALL ASSIGNMENTS ####\n"
 puts AssignmentList.new(Assignment.all)
+gets
 
 puts "\n#### PROBLEM ####\n"
 problem = ProblemCreator.new.problem
 puts problem
+gets
 
 puts "\n#### SOLUTION ####\n"
 solution = ProblemSolver.new(problem).solution
