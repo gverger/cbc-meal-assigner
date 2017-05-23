@@ -14,8 +14,7 @@ class ProblemSolver
     @solution ||=
       begin
         cbc_problem.solve
-        raise "Infeasible!" if cbc_problem.proven_infeasible?
-        Solution.new(cbc_problem)
+        cbc_problem.proven_infeasible? ? Conflict.new(cbc_problem) : Solution.new(cbc_problem)
       end
   end
 end

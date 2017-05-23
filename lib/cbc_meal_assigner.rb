@@ -15,6 +15,7 @@ files = %w(
   models/order.rb
   models/restaurant.rb
   models/solution.rb
+  models/conflict.rb
   interactors/problem_creator.rb
   interactors/problem_solver.rb
 )

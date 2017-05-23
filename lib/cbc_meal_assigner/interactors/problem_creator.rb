@@ -59,7 +59,7 @@ class ProblemCreator
     PastAssignment.each do |past_assignment|
       assignments_to_avoid = past_assignment.matching_assignments
       assignments_to_avoid.each do |assignment|
-        cbc_model.enforce(assignment.cbc_variable == 0)
+        cbc_model.enforce(past_assignment: assignment.cbc_variable == 0)
       end
     end
   end
