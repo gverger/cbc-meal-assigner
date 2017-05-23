@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "cbc_meal_assigner"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+populate
+create_assignments
+
+puts "#### ALL ASSIGNMENTS ####\n"
+puts AssignmentList.new(Assignment.all)
+
+puts "\n#### PROBLEM ####\n"
+problem = ProblemCreator.new.problem
+puts problem
+
+puts "\n#### SOLUTION ####\n"
+solution = ProblemSolver.new(problem).solution
+puts solution
