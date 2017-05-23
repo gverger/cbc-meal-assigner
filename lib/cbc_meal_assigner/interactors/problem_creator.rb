@@ -21,6 +21,7 @@ class ProblemCreator
   def create_constraints
     one_restaurant_per_order
     not_same_restaurant_twice
+    restaurant_capacities
   end
 
   def one_restaurant_per_order
@@ -37,6 +38,18 @@ class ProblemCreator
       assignments.group_by { |a| a.order.client }.each do |client, assignments|
         assignment_variables = assignments.map(&:cbc_variable)
         cbc_model.enforce(same_restaurant: assignment_variables.inject(:+) <= 1)
+      end
+    end
+  end
+
+  def restaurant_capacities
+    Restaurant.each do |restaurant|
+      assignments = Assignment.for_restaurant(restaurant)
+      assignments.group_by(&:date).each do |_date, assignments_for_date|
+        terms = assignments_for_date.map do |assignment|
+          assignment.order_headcount * assignment.cbc_variable
+        end
+        cbc_model.enforce(restaurant_capacity: terms.inject(:+) <= restaurant.capacity)
       end
     end
   end
