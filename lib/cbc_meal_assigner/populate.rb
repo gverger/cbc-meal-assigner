@@ -20,5 +20,8 @@ def populate
   Order.create(:MUL001, :MuleSoft, :monday)
   Order.create(:MUL002, :MuleSoft, :wednesday)
 
+  PastAssignment.create(:Twitch, :BunMee)
   PastAssignment.create(:MuleSoft, :Dosa)
+  PastAssignment.create(:MuleSoft, :TropBon)
+  PastAssignment.create(:Quantcast, :Dosa)
 end
