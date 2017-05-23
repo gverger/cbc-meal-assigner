@@ -19,10 +19,10 @@ PastAssignment.each do |assignment|
 end
 
 puts "\n#### PROBLEM ####\n"
-problem = ProblemCreator.new.problem
-puts problem
+problem_creator = ProblemCreator.new
+puts problem_creator.problem
 gets
 
 puts "\n#### SOLUTION ####\n"
-solution = ProblemSolver.new(problem).solution
+solution = ProblemSolver.new(problem_creator).solution
 puts solution
